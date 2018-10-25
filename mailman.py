@@ -1,3 +1,4 @@
+import getpass
 import csv
 import smtplib
 
@@ -22,11 +23,12 @@ def send_email(user, pwd, recipient, subject, body):
         print("failed to send mail")
 
 email = input("Email: ")
-passwd = input("Password: ")
+passwd = getpass.getpass("Password: ")
 
-mentor_contact = []
+mentor_contact = {}
 with open('mentors.csv') as mentors_csv:
-     mentor_contact.extend(csv.reader(mentors_csv, delimiter=','))
+    for mentor_list in csv.reader(mentors_csv, delimiter=','):
+        mentor_contact[mentor_list[3]] = mentor_list[:3]
 
 format = ""
 
@@ -38,13 +40,12 @@ with open("format.content") as file:
 with open('data.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for row in csv_reader:
-        for mentor in mentor_contact:
-            if mentor[3] == "Devdutt": #row[2]:
-                print(f'Email sent to {row[0]} @ email {row[1]} allotted to {", ".join(mentor[:3])}')
-                sub = format[0]
-                body = "".join(format[1:])
-                email = "devdutt@ieee.org" #row
-                body = body.replace("{Name}", row[0]).replace("{mentor_name}", mentor[0]).replace("{mentor_phone}", mentor[2]).replace("{mentor_email}", mentor[1])
-                print(body)
-                send_email(email, passwd, email, sub, body)
+        mentor = mentor_contact[row[2]]
+        print(f'Email sent to {row[0]} @ email {row[1]} allotted to {", ".join(mentor)}')
+        sub = format[0]
+        body = "".join(format[1:])
+        email = "devdutt@ieee.org" #row
+        body = body.replace("{Name}", row[0]).replace("{mentor_name}", mentor[0]).replace("{mentor_phone}", mentor[2]).replace("{mentor_email}", mentor[1])
+        print(body)
+        send_email(email, passwd, email, sub, body)
 
