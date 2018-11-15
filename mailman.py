@@ -25,27 +25,21 @@ def send_email(user, pwd, recipient, subject, body):
 email = input("Email: ")
 passwd = getpass.getpass("Password: ")
 
-mentor_contact = {}
-with open('mentors.csv') as mentors_csv:
-    for mentor_list in csv.reader(mentors_csv, delimiter=','):
-        mentor_contact[mentor_list[3]] = mentor_list[:3]
-
-format = ""
-
 with open("format.content") as file: 
-   format = file.readlines()
+   format = file.readlines() # Thus format now contains the content as well as the subject of the mail(row 0)
 
-
-
+# data.csv contains the details of all those recievng the email. The formais given below
+"""
+Name, Email, Extra (Details of no particular reason here)
+"""
 with open('data.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
+    # Below, each row is the detail of a user
     for row in csv_reader:
         mentor = mentor_contact[row[2]]
-        print(f'Email sent to {row[0]} @ email {row[1]} allotted to {", ".join(mentor)}')
+        print(f'Email sent to {row[0]} @ email {row[1]})
         sub = format[0]
-        body = "".join(format[1:])
-        email = "devdutt@ieee.org" #row
-        body = body.replace("{Name}", row[0]).replace("{mentor_name}", mentor[0]).replace("{mentor_phone}", mentor[2]).replace("{mentor_email}", mentor[1])
-        print(body)
+        body = "".join(format[1:]).replace("{Name}", row[0]) # Take in body of email from content file and make manipulate it according to reciever.
+        email = row[1] # The email of the reciever
         send_email(email, passwd, email, sub, body)
 
