@@ -17,3 +17,8 @@ Subject Line Goes Like This
 <!Doctype>
 <Add your HTML here>
 ```
+
+## Librariers used
+The only external module used in this script is the **smtplib** library which defines an smtp client session object which can be then used for sending emails to any internet machine with **SMTP** OR **ESMTP** listener daemon.
+
+
