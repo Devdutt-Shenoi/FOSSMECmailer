@@ -23,3 +23,5 @@ The only external module used in this script is the **smtplib** library which de
 ## Running the script 
 Your require **smtplib** library as a prerequiste for running this script along with a stable internet connection. Create(or modify if required) format.content file of **HTML EMAIL** format and data.csv within the same directory.Run the script with python 3.7. 
 
+## Input
+The email id and password of the user who runs the script,from whom all the mails are to be sent is taken.With password taken in securely using the getpass function of python.
