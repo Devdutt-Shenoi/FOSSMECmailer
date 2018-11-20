@@ -17,3 +17,11 @@ Subject Line Goes Like This
 <!Doctype>
 <Add your HTML here>
 ```
+## Librariers used
+The only external module used in this script is the **smtplib** library. It defines an smtp client session object, which can be used to send emails to any internet machine with **SMTP** OR **ESMTP** listener daemons.
+
+## Running the script 
+The **smtplib** library is a prerequiste for running this script, along with a stable internet connection. Create(or modify) *format.content* file containing the **HTML EMAIL** format and the *data.csv* within the same directory. Run the script with python 3x. 
+
+## Input
+The inputs from the user are in the form of an authentication for the email account through which which the mails are sent. Herein the getpass function of python is used to recieve the password in redacted format.
