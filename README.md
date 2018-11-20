@@ -18,10 +18,10 @@ Subject Line Goes Like This
 <Add your HTML here>
 ```
 ## Librariers used
-The only external module used in this script is the **smtplib** library which defines an smtp client session object which can be then used for sending emails to any internet machine with **SMTP** OR **ESMTP** listener daemon.
+The only external module used in this script is the **smtplib** library. It defines an smtp client session object, which can be used to send emails to any internet machine with **SMTP** OR **ESMTP** listener daemons.
 
 ## Running the script 
-Your require **smtplib** library as a prerequiste for running this script along with a stable internet connection. Create(or modify if required) format.content file of **HTML EMAIL** format and data.csv within the same directory.Run the script with python 3.7. 
+The **smtplib** library is a prerequiste for running this script, along with a stable internet connection. Create(or modify) *format.content* file containing the **HTML EMAIL** format and the *data.csv* within the same directory. Run the script with python 3x. 
 
 ## Input
-The email id and password of the user who runs the script,from whom all the mails are to be sent is taken.With password taken in securely using the getpass function of python.
+The inputs from the user are in the form of an authentication for the email account through which which the mails are sent. Herein the getpass function of python is used to recieve the password in redacted format.
