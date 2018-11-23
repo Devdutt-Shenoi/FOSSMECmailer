@@ -28,7 +28,7 @@ passwd = getpass.getpass("Password: ")
 with open("format.content") as file: 
    format = file.readlines() # Thus format now contains the content as well as the subject of the mail(row 0)
 
-# data.csv contains the details of all those receiving the email. The formais given below
+# data.csv contains the details of all those receiving the email. The format is given below
 """
 Name, Email, Extra (Details of no particular reason here)
 """
